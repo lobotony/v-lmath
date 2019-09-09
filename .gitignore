@@ -1,0 +1,9 @@
+.DS_Store
+*.dSYM
+lmath_test
+fns.txt
+vec2_test
+mat33_test
+mat44_test
+vec4_test
+vec3_test
