@@ -1,7 +1,7 @@
-import lmath
+import lobotony.lmath
 
 pub fn test_rect_contains() {
-    r := lmath.rect{0.0, 0.0, 10.0, 10.0}
+    r := lmath.Rect{0.0, 0.0, 10.0, 10.0}
     assert r.contains(0.0, 0.0)
     assert r.contains(3.0, 5.0)
     assert !r.contains(10.0, 10.0)

@@ -1,4 +1,4 @@
-import lmath
+import lobotony.lmath
 
 pub fn test_vec2_equal() {
     assert lmath.Vec2{1.0, 2.0}.equals(lmath.Vec2{1.0, 2.0})

@@ -1,4 +1,4 @@
-import lmath
+import lobotony.lmath
 
 pub fn test_mat33_equals() {
     m0 := lmath.mat33_identity()
@@ -13,7 +13,7 @@ pub fn test_mat33_equals() {
 }
 
 pub fn test_mat33_vec3_identity_transform() {
-    v := lmath.vec3{1.0, 2.0, 3.0}
+    v := lmath.Vec3{1.0, 2.0, 3.0}
     m := lmath.mat33_identity()
     r := m.transform(v)
 
