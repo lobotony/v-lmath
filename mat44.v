@@ -46,7 +46,7 @@ pub fn mat44_identity() Mat44 {
     return result
 }
 
-pub fn mat44_translate(offset vec3) Mat44 {
+pub fn mat44_translate(offset Vec3) Mat44 {
     mut result := mat44_identity()
     result.data[12] = offset.x
     result.data[13] = offset.y
@@ -62,7 +62,7 @@ pub fn ma44_scale(sx f32, sy f32, sz f32) Mat44 {
     return result
 }
 
-pub fn mat44_rotate(angle f32, unnormalizedAxis vec3) Mat44 {
+pub fn mat44_rotate(angle f32, unnormalizedAxis Vec3) Mat44 {
     c := C.cosf(angle)
     s := C.sinf(angle)
 
@@ -120,7 +120,7 @@ pub fn mat44_perspective(fovy f32, aspect f32, zNear f32, zFar f32) Mat44 {
     return result
 }
 
-pub fn mat44_look_at(eye vec3, center vec3, up vec3) Mat44 {
+pub fn mat44_look_at(eye Vec3, center Vec3, up Vec3) Mat44 {
     f := center.minus(eye).normalize()
     s := f.cross(up).normalize()
     u := s.cross(f)
@@ -143,22 +143,22 @@ pub fn mat44_look_at(eye vec3, center vec3, up vec3) Mat44 {
     return result
 }
 
-pub fn (self Mat44) get_col(index int) vec4 {
+pub fn (self Mat44) get_col(index int) Vec4 {
     match index {
-        0 => { return vec4{self.data[0], self.data[1], self.data[2], self.data[3]} }
-        1 => { return vec4{self.data[4], self.data[5], self.data[6], self.data[7]} }
-        2 => { return vec4{self.data[8], self.data[9], self.data[10], self.data[11]} }
-        3 => { return vec4{self.data[12], self.data[13], self.data[14], self.data[15]} }
+        0 => { return Vec4{self.data[0], self.data[1], self.data[2], self.data[3]} }
+        1 => { return Vec4{self.data[4], self.data[5], self.data[6], self.data[7]} }
+        2 => { return Vec4{self.data[8], self.data[9], self.data[10], self.data[11]} }
+        3 => { return Vec4{self.data[12], self.data[13], self.data[14], self.data[15]} }
         else => { panic('index out of bounds: $index') }
     }
 }
 
-pub fn (self Mat44) get_row(index int) vec4 {
+pub fn (self Mat44) get_row(index int) Vec4 {
     match index {
-        0 => { return vec4{self.data[0], self.data[4], self.data[8], self.data[12]} }
-        1 => { return vec4{self.data[1], self.data[5], self.data[9], self.data[13]} }
-        2 => { return vec4{self.data[2], self.data[6], self.data[10], self.data[14]} }
-        3 => { return vec4{self.data[3], self.data[7], self.data[11], self.data[15]} }
+        0 => { return Vec4{self.data[0], self.data[4], self.data[8], self.data[12]} }
+        1 => { return Vec4{self.data[1], self.data[5], self.data[9], self.data[13]} }
+        2 => { return Vec4{self.data[2], self.data[6], self.data[10], self.data[14]} }
+        3 => { return Vec4{self.data[3], self.data[7], self.data[11], self.data[15]} }
         else => { panic('index out of bounds: $index') }
     }
 }
@@ -228,8 +228,8 @@ pub fn (self Mat44) mult(other Mat44) Mat44 {
     return result
 }
 
-pub fn (self Mat44) transform(v vec4) vec4 {
-    mut result := vec4{}
+pub fn (self Mat44) transform(v Vec4) Vec4 {
+    mut result := Vec4{}
     result.x = self.get_row(0).dot(v)
     result.y = self.get_row(1).dot(v)
     result.z = self.get_row(2).dot(v)
@@ -237,8 +237,8 @@ pub fn (self Mat44) transform(v vec4) vec4 {
     return result
 }
 
-pub fn (self Mat44) transform_v3(v vec3) vec3 {
-    tmp := vec4{v.x, v.y, v.z, 1.0}
+pub fn (self Mat44) transform_v3(v Vec3) Vec3 {
+    tmp := Vec4{v.x, v.y, v.z, 1.0}
     r := self.transform(tmp)
     return r.xyz()
 }
