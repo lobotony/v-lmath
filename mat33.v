@@ -62,8 +62,8 @@ pub fn (self Mat33) get_row(index int) Vec3 {
 }
 
 pub fn (self Mat33) get(row int, column int) f32 {
-    assert (row >= 0) && (row < 3)
-    assert (column >= 0) && (column < 3)
+    //assert (row >= 0) && (row < 3)
+    //assert (column >= 0) && (column < 3)
     return self.data[row*3+column]
 }
 

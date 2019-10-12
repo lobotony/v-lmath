@@ -90,7 +90,7 @@ pub fn mat44_ortho2d(left f32, right f32, bottom f32, top f32) Mat44 {
 }
 
 pub fn mat44_ortho(left f32, right f32, bottom f32, top f32, zNear f32, zFar f32) Mat44 {
-    assert C.fabsf(zNear - C.FLT_EPSILON) > f32(0.0)
+    // FIXME: assert C.fabsf(zNear - C.FLT_EPSILON) > f32(0.0)
 
     mut result := mat44_identity()
 
@@ -105,7 +105,7 @@ pub fn mat44_ortho(left f32, right f32, bottom f32, top f32, zNear f32, zFar f32
 }
 
 pub fn mat44_perspective(fovy f32, aspect f32, zNear f32, zFar f32) Mat44 {
-    assert C.fabsf(aspect - C.FLT_EPSILON) > f32(0.0)
+    // FIXME assert C.fabsf(aspect - C.FLT_EPSILON) > f32(0.0)
 
     tan_half_fovy := C.tanf(fovy / 2.0)
 
@@ -164,14 +164,14 @@ pub fn (self Mat44) get_row(index int) Vec4 {
 }
 
 pub fn (self Mat44) get(row int, column int) f32 {
-    assert (row >= 0) && (row < 4)
-    assert (column >= 0) && (column < 4)
+    // FIXME: assert (row >= 0) && (row < 4)
+    // fIXME: assert (column >= 0) && (column < 4)
     return self.data[row*4+column]
 }
 
 pub fn (self mut Mat44) set(row int, column int, val f32) {
-    assert (row >= 0) && (row < 4)
-    assert (column >= 0) && (column < 4)
+    // FIXME: assert (row >= 0) && (row < 4)
+    // FIXME: assert (column >= 0) && (column < 4)
     self.data[row*4+column] = val
 }
 
