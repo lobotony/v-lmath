@@ -45,19 +45,19 @@ pub fn mat33_identity() Mat33 {
 
 pub fn (self Mat33) get_col(index int) Vec3 {
     match index {
-        0 => { return Vec3{self.data[0], self.data[1], self.data[2]} }
-        1 => { return Vec3{self.data[3], self.data[4], self.data[5]} }
-        2 => { return Vec3{self.data[6], self.data[7], self.data[8]} }
-        else => { panic('index out of bounds: $index') }
+        0 { return Vec3{self.data[0], self.data[1], self.data[2]} }
+        1 { return Vec3{self.data[3], self.data[4], self.data[5]} }
+        2 { return Vec3{self.data[6], self.data[7], self.data[8]} }
+        else { panic('index out of bounds: $index') }
     }
 }
 
 pub fn (self Mat33) get_row(index int) Vec3 {
     match index {
-        0 => { return Vec3{self.data[0], self.data[3], self.data[6]} }
-        1 => { return Vec3{self.data[1], self.data[4], self.data[7]} }
-        2 => { return Vec3{self.data[2], self.data[5], self.data[8]} }
-        else => { panic('index out of bounds: $index') }
+        0 { return Vec3{self.data[0], self.data[3], self.data[6]} }
+        1 { return Vec3{self.data[1], self.data[4], self.data[7]} }
+        2 { return Vec3{self.data[2], self.data[5], self.data[8]} }
+        else { panic('index out of bounds: $index') }
     }
 }
 
