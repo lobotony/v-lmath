@@ -7,7 +7,7 @@ module lmath
  * m[2] m[6] m[10] m[14]
  * m[3] m[7] m[11] m[15]
  */
-struct Mat44 {
+pub struct Mat44 {
     pub:
     data [16]f32
 }

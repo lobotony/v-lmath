@@ -1,6 +1,6 @@
 module lmath
 
-struct Vec2 {
+pub struct Vec2 {
     pub mut:
     x f32
     y f32
